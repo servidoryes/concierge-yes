@@ -47,7 +47,7 @@ function Concierge(opts) {
 
     // title bar
     var title_bar = $("<div>", { class: "_concierge_title" });
-    var title_text = $("<p>", { class: "_concierge_title_text" }).text("Concierge")
+    var title_text = $("<p>", { class: "_concierge_title_text" }).text("Yes Bot")
     var min = $("<img>", { src: _concierge_chat_host + "/min.png" })
     title_bar.append(min);
     title_bar.append(title_text);
@@ -60,8 +60,8 @@ function Concierge(opts) {
 
     // create the elements for the ID screen
     var id_div = $("<div>", { class: "_concierge_chat_id_screen", id: "_concierge_chat_id_screen"})
-    var welcome = $("<p>").text("Welcome to Concierge, click 'Get Started' to speak to someone")
-    var name_button = $("<button>", { name: "_concierge_chat_name_submit", id: "_concierge_chat_name_submit", type: "button" }).text("Get Started!")
+    var welcome = $("<p>").text("Seja bem vindo! Clique 'Iniciar!' para conversar conosco")
+    var name_button = $("<button>", { name: "_concierge_chat_name_submit", id: "_concierge_chat_name_submit", type: "button" }).text("Iniciar!")
 
     // add these elements
     id_div.append(welcome);
@@ -90,7 +90,7 @@ function Concierge(opts) {
         chat_div.append(messages_ul)
 
         // chat inputs
-        var chat_input = $("<textarea>", { class: "_concierge_chat_msg", name: "_concierge_chat_msg", id: "_concierge_chat_msg", placeholder: "Enter your msg..." })
+        var chat_input = $("<textarea>", { class: "_concierge_chat_msg", name: "_concierge_chat_msg", id: "_concierge_chat_msg", placeholder: "Escreva sua mensagem..." })
         var chat_button = $("<button>", { class: "_concierge_chat_btn", name: "_concierge_chat_btn", id: "_concierge_chat_btn", type: "button" }).text(">")
         this.container.append(chat_input);
         this.container.append(chat_button);
@@ -118,7 +118,7 @@ function Concierge(opts) {
         if (msg != "") {
           
           this.renderChatMessage({
-            name: "You",
+            name: "Você",
             msg: msg,
             align: "left"
           })
@@ -145,7 +145,7 @@ function Concierge(opts) {
 
             res.output.text.forEach(function(t) {
               this.renderChatMessage({
-                name: "Concierge",
+                name: "Yes",
                 msg: t,
                 align: "right"
               })
@@ -180,7 +180,7 @@ function Concierge(opts) {
       this.renderChatWindow();
 
       // initiate the conversation
-      this.sendMessage("Hello")
+      this.sendMessage("Olá")
 
     }
 
