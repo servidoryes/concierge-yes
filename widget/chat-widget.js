@@ -3,11 +3,13 @@
   FOR SIMPLE NOTIFICATION SERVICE
 ******/
 var _concierge_chat_host = document.currentScript.src.replace(/\/chat-widget.js$/, '');
+var ip_atual = 0;
 function Concierge(opts) { 
 
   this.url = opts.url || "";
   this.workspace_id = opts.workspace_id || null;
-  this.context = null;
+  this.context = null; 
+  
 
   // dependencies
   if (typeof jQuery != "function") throw new Error("jQuery not detected and is required")
@@ -60,7 +62,7 @@ function Concierge(opts) {
 
     // create the elements for the ID screen
     var id_div = $("<div>", { class: "_concierge_chat_id_screen", id: "_concierge_chat_id_screen"})
-    var welcome = $("<p>").text("Seja bem vindo! Clique 'Iniciar!' para conversar conosco")
+    var welcome = $("<p>").text("Seja bem vindo! Clique em 'Iniciar!' para conversar conosco")
     var name_button = $("<button>", { name: "_concierge_chat_name_submit", id: "_concierge_chat_name_submit", type: "button" }).text("Iniciar!")
 
     // add these elements
@@ -118,14 +120,15 @@ function Concierge(opts) {
         if (msg != "") {
           
           this.renderChatMessage({
-            name: "Você",
+            name: "VocÃª",
             msg: msg,
             align: "left"
           })
 
           var data = {
             text: msg,
-            workspace: this.workspace_id
+            workspace: this.workspace_id,
+	    ip: ip_atual
           }
           if (this.context) {
             data.context = this.context;
@@ -180,10 +183,50 @@ function Concierge(opts) {
       this.renderChatWindow();
 
       // initiate the conversation
-      this.sendMessage("Olá")
+      this.sendMessage("OlÃ¡")
 
     }
 
   }.bind(this));
 
 }
+
+
+function getIp(callback)
+{
+    function response(s)
+    {
+        callback(window.userip);
+
+        s.onload = s.onerror = null;
+        document.body.removeChild(s);
+    }
+
+    function trigger()
+    {
+        window.userip = false;
+
+        var s = document.createElement("script");
+        s.async = true;
+        s.onload = function() {
+            response(s);
+        };
+        s.onerror = function() {
+            response(s);
+        };
+
+        s.src = "https://l2.io/ip.js?var=userip";
+        document.body.appendChild(s);
+    }
+
+    if (/^(interactive|complete)$/i.test(document.readyState)) {
+        trigger();
+    } else {
+        document.addEventListener('DOMContentLoaded', trigger);
+    }
+}
+
+getIp(function (ip) {
+    ip_atual = ip;
+    //console.log(ip_atual);
+});
