@@ -15,12 +15,7 @@ const generateData = function() {
   /*let obj = {
     id: 'CFYM268',
     name: "Wainstones Hotel",
-    address: "31 High Street, Great Broughton, Cleveland TS9 7EW",
-    postcode: "TS97EW", //remeber to remove the space
-    phone: "01642-712-268",
     website: "http://www.wainstoneshotel.co.uk/",
-    twitter: "wainstoneshotel",
-    facebook: "https://www.facebook.com/wainstoneshotel/",
     email: "enquiries@wainstoneshotel.co.uk",
     description: "Hotel"
   }*/
@@ -28,12 +23,7 @@ const generateData = function() {
   var configfile = path.join(os.homedir(),'.concierge.json');
   var config = {
     name: '',
-    address: '',
-    postcode: '',
-    phone: '',
     website: '',
-    twitter: '', 
-    facebook: '',
     email: '',
     description: '',
     username: '',
@@ -72,21 +62,6 @@ const generateData = function() {
         required: true,
         default: config.name
       },
-      address: {
-        description: 'Business address',
-        required: true,
-        default: config.address
-      },
-      postcode: {
-        description: 'Postcode/zipcode',
-        required: true,
-        default: config.postcode
-      },
-      phone: {
-        description: 'Phone number',
-        required: true,
-        default: config.phone
-      },
       website: {
         description: 'Website URL',
         required: true,
@@ -98,22 +73,6 @@ const generateData = function() {
         required: true,
         format: 'email',
         default: config.email
-      },
-      twitter: {
-        message: 'Twitter handle',
-        required: true,
-        default: config.twitter
-      },
-      facebook: {
-        message: 'Facebook profile URL',
-        required: true,
-        format: 'url',
-        default: config.facebook
-      },
-      opening: {
-        message: 'Opening hours',
-        default: config.opening || '24 hours',
-        required: true
       }
     }
   };
