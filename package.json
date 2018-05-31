@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ibm-cds-labs/concierge.git"
+    "url": "git+https://github.com/servidoryes/concierge-yes"
   },
-  "author": "Glynn Bird <glynn.bird@gmail.com>",
+  "author": "Yes2mtec <servidor@yes2mtec.com.br>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ibm-cds-labs/concierge/issues"
+    "url": "https://github.com/servidoryes/concierge-yes/issues"
   },
-  "homepage": "https://github.com/ibm-cds-labs/concierge#readme",
+  "homepage": "https://github.com/servidoryes/concierge-yes#readme",
   "dependencies": {
     "colours": "^0.6.0-2",
     "prompt": "^1.0.0",
